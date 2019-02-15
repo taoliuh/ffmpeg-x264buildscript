@@ -12,7 +12,7 @@ COMP_BUILD=$1
 #需要编译的Android API版本
 ANDROID_API=19
 #需要编译的NDK路径，NDK版本需大等于r15c
-NDK=/Users/zhaoliangtai/Downloads/android-ndk-r16b
+NDK=/Users/liutao/android-ndk-r16b
 
 #x264库路径
 x264=$SHELL_PATH/x264_android
@@ -32,9 +32,9 @@ TRIPLES_PATH=(arm-linux-androideabi-4.9 aarch64-linux-android-4.9 x86-4.9 x86_64
 
 FF_CONFIGURE_FLAGS="--enable-static --disable-shared --enable-pic --enable-gpl --enable-postproc --disable-stripping --enable-small --enable-version3"
 
-rm -rf "$SOURCE"
 if [ ! -r $SOURCE ]
 then
+    rm -rf "$SOURCE"
     echo "$SOURCE source not found, Trying to download..."
     curl http://www.ffmpeg.org/releases/$SOURCE.tar.bz2 | tar xj || exit 1
 fi

@@ -18,7 +18,7 @@ fi
 #需要编译的NDK路径，NDK版本需大等于r15c
 if [ ! "$NDK" ]
 then
-NDK=/Users/zhaoliangtai/Downloads/android-ndk-r16b
+NDK=/Users/liutao/android-ndk-r16b
 fi
 echo ANDROID_API=$ANDROID_API
 echo NDK=$NDK
@@ -30,9 +30,9 @@ TRIPLES_PATH=(arm-linux-androideabi-4.9 aarch64-linux-android-4.9 x86-4.9 x86_64
 
 FF_CONFIGURE_FLAGS="--enable-static --enable-pic --disable-cli"
 
-rm -rf "$SOURCE"
 if [ ! -r $SOURCE ]
 then
+    rm -rf "$SOURCE"
     echo "$SOURCE source not found, Trying to download..."
     if [ "$LAST_VERSION" ]
     then
@@ -40,7 +40,7 @@ then
     else
         X264_TAR_NAME="x264-snapshot-20160114-2245.tar.bz2"
     fi
-    curl -O http://download.videolan.org/pub/videolan/x264/snapshots/$X264_TAR_NAME
+    curl -O ftp://ftp.videolan.org/pub/x264/snapshots/$X264_TAR_NAME
     mkdir $X264_PATH
     tar zxvf $SHELL_PATH/$X264_TAR_NAME --strip-components 1 -C $X264_PATH || exit 1
 fi
